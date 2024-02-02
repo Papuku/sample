@@ -1,0 +1,51 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body modal-body-sub_agile">
+					<div class="main-mailposi">
+						<span class="fa fa-envelope-o" aria-hidden="true"></span>
+					</div>
+					<div class="modal_body_left modal_body_left1">
+						<h3 class="agileinfo_sign">EDIT YOUR PROFILE</h3>
+						
+						<form action="{% url 'edit_profile' %}" method="post" enctype="multipart/form-data">
+							{% csrf_token %}
+							{{msg}}
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" placeholder="First Name" value="{{user_data.first_name}}" name="first_name" required="">
+							</div>
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" placeholder="Last Name" name="last_name" value="{{user_data.last_name}}" required="">
+							</div>
+							<div class="styled-input">
+								<input type="email" placeholder="E-mail" value="{{user_data.email}}" name="email" required="" disabled>
+							</div>
+							<div class="styled-input">
+								<input type="text" placeholder="address" name="address" value="{{user_data.addres}}" required="">
+							</div>
+							<div class="styled-input">
+								<input type="text" placeholder="Mobile" name="mobile" value="{{user_data.mobile}}" required="">
+							</div>
+                            <div class="styled-input">
+								<input type="file" placeholder="pic" name="img" value="{{user_data.pic}}" required="">
+							</div>
+							
+							<input type="submit" value="SAVE YOUR CHANGES">
+						</form>
+						<div class="styled-input">
+							<a href="{% url 'change_password' %}"><button>CHANGE PASSWORD</button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //Modal content-->
+		</div>
+	
+
+	{% endblock %}

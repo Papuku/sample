@@ -1,0 +1,51 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<div class="content-start transition">
+  <div class="container-fluid dashboard">
+    <div class="content-header">
+  <div class="card">
+    <div class="card-header">
+      <h4>Latest Transaction</h4>
+    </div>
+    <div class="card-body"> 
+    <div class="table-responsive"> 
+      <table class="table table-striped">
+        <thead>
+          <tr>
+          <!-- <th scope="col">Order Id</th> -->
+          <th scope="col">PRODUCT NAME</th>
+          <th scope="col">DESCRIPTIONS</th>
+          <th scope="col">PICTURE</th>
+          <th scope="col">PRICE</th>
+          <!-- <th scope="col">Payme</th> -->
+          <th scope="col">ACTION</th>
+          </tr>
+        </thead>
+        {% for i in product_data %}
+        <tbody>
+          
+          <tr>
+
+          <td>{{i.product_name}}</td>
+          <td>{{i.dec}}</td>
+          <td><img src="{{i.pic.url}}" alt="" width="100px"></td>
+          <td>${{i.price}}</td>
+          <td>
+            <a href="{% url 'edit_product' i.id %}"><button class="btn btn-primary">Edit</button></a>
+            <a href="{% url 'delete_product' i.id %}"><button class="btn btn-primary">Remove</button></a>
+
+          </td>
+          </tr>
+         
+        </tbody>
+        {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+{% endblock %}

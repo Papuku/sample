@@ -1,0 +1,39 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body modal-body-sub_agile">
+        <div class="main-mailposi">
+            <span class="fa fa-envelope-o" aria-hidden="true"></span>
+        </div>
+        <div class="modal_body_left modal_body_left1">
+            <h3 class="agileinfo_sign">Log In </h3>
+            <p>
+                Log In now, Let's start your Grocery Shopping. Don't have an account?
+                <a href="{% url 'register' %}">
+                    register Now</a>
+            </p>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                {{msg}}
+                <div class="styled-input agile-styled-input-top">
+                    <input type="email" placeholder="Email" name="email" required="">
+                </div>
+                <div class="styled-input">
+                    <input type="password" placeholder="Password" name="password" required="">
+                </div>
+                 <a href="{% url 'forget' %}" style="color: blue;">forget password?</a><br>
+                <input type="submit" value="Log In">
+                <!-- <a href="#" style="color: blue;">forget password?</a> -->
+            </form>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+{% endblock %}
